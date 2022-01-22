@@ -1,15 +1,16 @@
-const res = require('express/lib/response');
+const express = require('express');
+const cors = require('cors');
+var bodyParser = require('body-parser')
+const app = express();
 
-const express = require('express')();
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-console.log()
-
-express.get('/',(req, res)=>{
-    console.log('hello')
-
-    // res.send('hyellx')
+app.post('/',(req, res)=>{
+    console.log('hello',req.body)
 })
 
-express.listen(4331,()=>{
+app.listen(4331,()=>{
     console.log('Server running on 4331')
 })
